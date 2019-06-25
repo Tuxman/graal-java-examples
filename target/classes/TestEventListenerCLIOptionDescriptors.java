@@ -1,5 +1,3 @@
-package instrument;
-
 import com.oracle.truffle.api.dsl.GeneratedBy;
 import org.graalvm.options.OptionCategory;
 import org.graalvm.options.OptionDescriptor;

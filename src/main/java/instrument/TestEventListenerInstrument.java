@@ -90,7 +90,7 @@ public class TestEventListenerInstrument extends TruffleInstrument{
 
 
     protected OptionDescriptors getOptionDescriptors() {
-        return new CPUTracerCLIOptionDescriptors();
+        return new TestEventListenerCLIOptionDescriptors();
     }
 
     private static void getSourceSectionFilter(Env env) {

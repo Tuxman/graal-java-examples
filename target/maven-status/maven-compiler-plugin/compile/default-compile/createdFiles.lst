@@ -1,0 +1,12 @@
+instrument/ProfilerCLI.class
+instrument/ProfilerCLI$3.class
+instrument/ProfilerCLI$2.class
+instrument/ProfilerCLI$SourceLocation.class
+instrument/TestEventListener.class
+instrument/TestEventListenerInstrument.class
+META-INF/truffle/instrument
+instrument/TestEventListenerCLI.class
+instrument/ProfilerCLI$4.class
+instrument/TestEventListenerCLIOptionDescriptors.class
+instrument/ProfilerCLI$1.class
+instrument/TestEventListenerInstrument$1.class
