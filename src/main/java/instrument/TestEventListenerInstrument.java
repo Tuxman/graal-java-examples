@@ -3,10 +3,7 @@ package instrument;
 import com.oracle.truffle.api.CompilerDirectives;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import com.oracle.truffle.api.instrumentation.*;
-import com.oracle.truffle.tools.profiler.impl.ProfilerToolFactory;
 import org.graalvm.options.OptionDescriptors;
-import org.graalvm.polyglot.Engine;
-import org.graalvm.polyglot.Instrument;
 
 import java.util.Objects;
 
@@ -17,45 +14,10 @@ public class TestEventListenerInstrument extends TruffleInstrument{
 
     }
 
-    public static final String ID = "testListener";
-    private boolean enabled;
-    private TestEventListener listener;
-    private static ProfilerToolFactory<TestEventListener> factory;
-
-
-
-    public static void setFactory(ProfilerToolFactory<TestEventListener> factory) {
-        if (factory == null || !factory.getClass().getName().startsWith("com.oracle.truffle.tools.profiler")) {
-            throw new IllegalArgumentException("Wrong factory: " + factory);
-        }
-        TestEventListenerInstrument.factory = factory;
-    }
-
-    static {
-        // Be sure that the factory is initialized:
-        try {
-            Class.forName(TestEventListener.class.getName(), true, TestEventListener.class.getClassLoader());
-        } catch (ClassNotFoundException ex) {
-            // Can not happen
-            throw new AssertionError();
-        }
-    }
-
-
-    public static TestEventListener getListener(Engine engine) {
-        Instrument instrument = engine.getInstruments().get(ID);
-        if (instrument == null) {
-            throw new IllegalStateException("Test Listener is not installed.");
-        }
-        return instrument.lookup(TestEventListener.class);
-    }
+    static final String ID = "testListener";
 
     @Override
     protected void onCreate(TruffleInstrument.Env env) {
-
-
-        /*listener = factory.create(env);
-        env.registerService(listener);*/
 
         System.out.println("onCreate");
         env.registerService(this);
@@ -91,10 +53,6 @@ public class TestEventListenerInstrument extends TruffleInstrument{
 
     protected OptionDescriptors getOptionDescriptors() {
         return new TestEventListenerCLIOptionDescriptors();
-    }
-
-    private static void getSourceSectionFilter(Env env) {
-        final boolean roots = env.getOptions().get(TestEventListenerCLI.TRACE_ROOTS);
     }
 }
 

@@ -16,4 +16,8 @@
 .history
 
 # target files
-./target/surefire-reports
+target/surefire-reports
+target/classes
+target/maven-status
+target/maven-archiver
+target/test-classes

@@ -1,7 +1,6 @@
 package instrument;
 
 import org.graalvm.polyglot.Context;
-import org.graalvm.polyglot.Instrument;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,11 +16,7 @@ class ExecutionEventListenerTest {
                 .option("testListener", "true")
                 .build();
 
-        TestEventListenerInstrument.getListener(context.getEngine());
-
         context.getEngine().getInstruments().get("testListener").lookup(Object.class);
-
-        Instrument instrument = ((Instrument) context.getEngine().getInstruments().get("testListener").lookup(Object.class));
 
         String instruments = context.getEngine().getInstruments().keySet().toString();
 
