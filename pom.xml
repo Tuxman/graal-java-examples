@@ -52,6 +52,9 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
+                <configuration>
+                    <argLine>-Dtruffle.class.path.append="lib/graal-java-examples-1.0.jar"</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
